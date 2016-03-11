@@ -6,6 +6,16 @@ import re
 from stemmer import PorterStemmer
 import json
 import math
+import sys
+
+
+def readFromFile(fileName, type):
+    """
+    Returns the content of the file.
+    """
+    file = open(fileName, type)
+    fileContent = file.read()
+    return fileContent
 
 
 def addToDict(listWords, stemWord):
@@ -65,7 +75,7 @@ def calculateIDF(dic, total):
     """
     IDF = {}
     for item in dic:
-        IDF[item] = {'freq': dic[item][0], 'idf': math.log(1 + total / dic[item][0])}
+        IDF[item] = {'freq': dic[item][0], 'idf': math.log(1 + total / dic[item][0]), 'docList': dic[item][1]}
     return IDF
 
 
@@ -83,10 +93,7 @@ def calculateTFList(dic):
 
 def calculateWD(TF, totalDocument):
     """
-    Calculates the Wd needed to calculated cosine measure
-    :param TF:
-    :param totalDocument:
-    :return:
+    Calculates the Wd needed to calculated cosine measure.
     """
     WD = {}
     for docId in range(1, totalDocument + 1):
@@ -100,35 +107,99 @@ def calculateWD(TF, totalDocument):
     return WD
 
 
-def vectorSpaceModel(totalDocument):
+def calculateSimilarity(processedQuery, IDF, WD, totalDocument):
+    Sim = {}
+    for docId in range(1, totalDocument + 1):
+        temp = 0
+        # To skip those documents that are blank
+        if not WD[docId]:
+            continue
+        for item in processedQuery:
+            if (item in IDF):
+                listItem = [x[0] for x in IDF[item]['docList']]
+                if docId in listItem:
+                    indexDoc = listItem.index(docId)
+                    freqDT = IDF[item]['docList'][indexDoc][1]
+                    logFreqDT = 1 + math.log(freqDT)
+                else:
+                    logFreqDT = 0
+                temp += logFreqDT * IDF[item]['idf']
+            else:
+                temp += 0
+        if (temp):
+            Sim[docId] = 1 / WD[docId] * temp
+
+    sortedDocument, sortedRank = sorted(Sim, key=Sim.__getitem__, reverse=True), sorted(Sim.values(), reverse=True)
+    return sortedDocument
+
+
+def vectorSpaceModel(totalDocument, queryFileRead, stopwords):
     """
     Query to calculate the cosine similarity between document d and Query Q
     """
+
+    # Loads the inverted File Hash
     dic = loadFromFile()
+    #
+    queryList = processQueryList(queryFileRead)
+    # Calculation of Inverse Document Frequency
     IDF = calculateIDF(dic, totalDocument)
+    # Calculation of Term Frequency
     TF = calculateTFList(dic)
+    # Calculation of Wd from all the Term Frequency calculated
     WD = calculateWD(TF, totalDocument)
+
+    pObj = PorterStemmer()
+    for query in queryList:
+        print "\n---------------------------------------------------------------------------------------"
+        print "Query: ", query
+        # Separate the string of query into list of words
+        listQuery = re.findall(r'\w+', query)
+        # Remove the stopwords and numbers from the list of query words
+        queryWithoutStopword = [x for x in listQuery if x not in stopwords and x.isalpha()]
+        # Stem the list of query words
+        processedQuery = [pObj.stem(x.lower(), 0, len(x) - 1) for x in queryWithoutStopword]
+        # Calculate the cosine measure (Similarity) for the query
+        rankedDocList = calculateSimilarity(processedQuery, IDF, WD, totalDocument)
+        print "Total number of documents retrieved:", len(rankedDocList)
+        print "Document ID:", rankedDocList
+        print "---------------------------------------------------------------------------------------"
+
+
+def processQueryList(queryFileRead):
+    """
+    Returns the query read from the file into list form by separating on finding .I and then .W
+    """
+    queryLists = re.split(".I | \n.I", queryFileRead)[1:]
+    queryList = []
+    for query in enumerate(queryLists):
+        startIndex = query[1].index('.W')
+        text = query[1][startIndex + 3:]
+        queryList.append(text)
+
+    return queryList
 
 
 def main():
     # Reading the document from the file
-    # file = open("cran.all.1400", "r")
-    file = open("test.txt", "r")
-    # file = open("cran.txt", "r")
-    documents = file.read()
+    fileName = "cran.all.1400"
+
+    documents = readFromFile(fileName, "r")
+
     # Reading stop words from the file
-    fileStopwords = open('stopwords.txt', 'r')
-    stopwordsList = fileStopwords.read()
+    stopwordsList = readFromFile("stopwords.txt", "r")
     stopwords = stopwordsList.split()
+
     # List that maintains the document id number, number of unique terms in document, for each term in the document, its term and it's term frequency.
     docId = 1
 
     # InvFileHash
     invFileHash = {}
+
     # Splits the multiple documents of the same file into list
     document = re.split(".I | \n.I", documents)[1:]
     totalDocument = len(document)
-    print "Total document:", totalDocument
+    print "Total documents:", totalDocument
     for doc in enumerate(document):
         startIndex = doc[1].index('.W\n')
         text = doc[1][startIndex + 3:]
@@ -146,8 +217,14 @@ def main():
         docId += 1
         invFileHash = createInvFileHash(invFileHash, docList)
 
+    # Writes to the Inverted File Hash file
     writeToFile(invFileHash)
-    vectorSpaceModel(totalDocument)
+
+    # To read the queries list from the cran query file
+    queryFileRead = readFromFile("cran.qry", "r")
+
+    # Calculate the Vector Space Model (total number of documents, stopwords list)
+    vectorSpaceModel(totalDocument, queryFileRead, stopwords)
 
 
 main()

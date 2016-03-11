@@ -103,3 +103,212 @@ internal .
 conduction in composite slabs exposed at one surface to a
 triangular heat rate .  this type of heating rate may occur, for
 example, during aerodynamic heating .
+.I 6
+.T
+one-dimensional transient heat flow in a multilayer
+slab .
+.A
+campbell,w.f.
+.B
+j. ae. scs. 25, 1958, 340.
+.W
+one-dimensional transient heat flow in a multilayer
+slab .
+  in a recent contribution to the readers'
+forum wassermann gave analytic
+solutions for the temperature in a double
+layer slab, with a triangular heat
+rate input at one face, insulated at the other,
+and with no thermal resistance
+at the interface .  his solutions were for the
+three particular cases..
+i propose here to give the general solution
+to this problem, to indicate
+briefly how it is obtained using the method of
+reference 2, and to point out
+that the solutions given by wassermann are
+incomplete for times longer
+than the duration of the heat input .
+.I 7
+.T
+the effect of controlled three-dimensional roughness
+on boundary layer transition at supersonic speeds .
+.A
+van driest,e.r. and mccauley,w.d.
+.B
+j. ae. scs. 27, 1960, 261.
+.W
+the effect of controlled three-dimensional roughness
+on boundary layer transition at supersonic speeds .
+  experiments were performed in the 12-in. supersonic wind
+tunnel of the jet propulsion laboratory of the california
+institute of technology to investigate the effect of three-dimensional
+roughness elements (spheres) on boundary-layer transition on a
+tained at local mach numbers of 1.90, 2.71, and 3.67 by varying
+trip size, position, spacing, and reynolds number per inch .
+the results indicate that (1) transition from laminar to turbulent
+flow induced by three-dimensional roughness elements begins
+when the double row of spiral vortices trailing each element
+contaminates and breaks down the surrounding field of vorticity, (2)
+transition appears rather suddenly, becoming more violent with
+increasing roughness height relative to the boundary-layer
+thickness, (3) after the breakdown of the vorticity field, the strength
+of the spiral vortices may still persist in the sublayer of the
+ensuing turbulent flow, (4) lateral spacing of roughness elements has
+little effect upon the initial breakdown (contamination) of the
+laminar flow, and (5) the trip reynolds number where u
+and v are the velocity and kinematic viscosity at the outer edge of
+the boundary layer and k is roughness height, such that transition
+occurs at the roughness position, varies as the position reynolds
+number to the one-fourth power, viz., where x is
+trip position .
+.I 8
+.T
+measurements of the effect of two-dimensional and three-dimensional
+roughness elements on boundary layer transition .
+.A
+klebanoff,p.s.
+.B
+j. ae. scs. 22, 1955, 803.
+.W
+measurements of the effect of two-dimensional and three-dimensional
+roughness elements on boundary layer transition .
+in his study of the effect of roughness on transition, h. l.
+dryden found, on the basis of available data, that the effect
+of a two-dimensional roughness element such as a /trip wire/
+could be represented reasonably well in terms of a functional
+relation between and, where is the reynolds number
+of transition based on distance from the leading edge, is the
+height of the roughness element, and is the boundary-layer
+displacement thickness at the position of the element .  at his
+suggestion some additional data were obtained, primarily to
+extend the range to higher values of, during the course of an
+investigation of transition on a flat plate conducted at the
+national bureau of standards .  after the results on the two-
+dimensional roughness elements were obtained, it appeared to be
+desirable to see whether a row of three-dimensional roughness
+elements would behave in the same way .
+.I 9
+.T
+transition studies and skin friction measurements on
+an insulated flat plate at a mach number of 5.8 .
+.A
+korkegi,r.h.
+.B
+j. ae. scs. 23, 1956, 97.
+.W
+transition studies and skin friction measurements on
+an insulated flat plate at a mach number of 5.8 .
+  an investigation of transition and skin friction on an insulated
+flat plate, 5 by 26 in., was made in the galcit 5 by 5 in.
+hypersonic wind tunnel at a nominal mach number of 5.8 .
+  the phosphorescent lacquer technique was used for transition
+detection and was found to be in good agreement with total-head
+rake measurements along the plate surface and pitot boundary-
+layer surveys .  it was found that the boundary layer was
+laminar at reynolds numbers of at least 5 x 10 .  transverse
+contamination caused by the turbulent boundary layer on the
+tunnel sidewall originated far downstream of the flat plate leading
+edge at reynolds numbers of 1.5 to 2 x 10, and spread at a
+uniform angle of 5 compared to 9 degree in low-speed flow .
+  the effect of two-dimensional and local disturbances was
+investigated .  the technique of air injection into the boundary
+layer as a means of hastening transition was extensively used .
+although the onset of transition occurred at reynolds numbers
+as low as 10, a fully developed turbulent boundary layer was
+not obtained at reynolds numbers much below 2 x 10
+regardless of the amount of air injected .
+  a qualitative discussion of these results is given with emphasis
+on the possibility of a greater stability of the laminar boundary
+layer in hypersonic flow than at lower speeds .
+  direct skin-friction measurements were made by means of the
+floating element technique, over a range of reynolds numbers
+verified as being laminar over the complete range .  with air
+injection, turbulent shear was obtained only for reynolds
+numbers greater than 2 x 10, this value being in good agreement with
+earlier results of this investigation .  the turbulent skin-friction
+coefficient was found to be approximately 0.40 of that for
+incompressible flow for a constant value of r, and 0.46 for an effective
+reynolds number between 5 and 6 x 10 .
+.I 10
+.T
+the theory of the impact tube at low pressure .
+.A
+chambre,p.l. and schaaf,s.a.
+.B
+j. ae. scs. 15, 1948, 735.
+.W
+the theory of the impact tube at low pressure .
+  a theoretical analysis has been made for an impact tube of the
+relation between free-stream mach number and the impact and
+free-stream pressures and densities for extremely low pressures .
+it is shown that the results differ appreciably from the
+corresponding continuum relations .
+.I 11
+.T
+similar solutions in compressible laminar free mixing
+problems .
+.A
+napolitano,l.
+.B
+j. ae. scs. 23, 1956, 389.
+.W
+similar solutions in compressible laminar free mixing
+problems .
+there are in supersonic aerodynamics many situations of
+practical interest wherein streams of different velocities and,
+in general, different stagnation pressures mix with one another .
+in the majority of these problems the interaction between the
+two streams takes place in the presence of an axial pressure
+gradient .  its effect on the characteristics of the mixing may
+influence significantly the performances of the devices wherein
+the phenomena cited above occur .  a theoretical and
+experimental program of research to study mixing in the presence of
+axial pressure gradients is being carried on at the polytechnic
+institute of brooklyn .
+.I 12
+.T
+some structural and aerelastic considerations of high
+speed flight .
+.A
+bisplinghoff,r.l.
+.B
+j. ae. scs. 23, 1956, 289.
+.W
+some structural and aerelastic considerations of high
+speed flight .
+  the dominating factors in structural design of high-speed
+aircraft are thermal and aeroelastic in origin .  the subject
+matter is concerned largely with a discussion of these factors and
+their interrelation with one another .  a summary is presented
+of some of the analytical and experimental tools available to
+aeronautical engineers to meet the demands of high-speed flight
+upon aircraft structures .  the state of the art with respect to
+heat transfer from the boundary layer into the structure, modes
+of failure under combined load as well as thermal inputs and
+acrothermoelasticity is discussed .  methods of attacking and
+alleviating structural and aeroelastic problems of high-speed
+flight are summarized .  finally, some avenues of fundamental
+research are suggested .
+.I 13
+.T
+similarity laws for stressing heated wings .
+.A
+tsien,h.s.
+.B
+j. ae. scs. 20, 1953, 1.
+.W
+similarity laws for stressing heated wings .
+  it will be shown that the differential equations for a heated
+plate with large temperature gradient and for a similar plate at
+constant temperature can be made the same by a proper
+modification of the thickness and the loading for the isothermal plate .
+this fact leads to the result that the stresses in the heated plate
+can be calculated from measured strains on the unheated plate by
+a series of relations, called the /similarity laws ./  the
+application of this analog theory to solid wings under aerodynamic
+heating is discussed in detail .  the loading on the unheated analog
+wing is, however, complicated and involves the novel concept
+of feedback and /body force/ loading .  the problem of stressing
+a heated box-wing structure can be solved by the same analog
+method and is briefly discussed .
