@@ -6,7 +6,6 @@ import re
 from stemmer import PorterStemmer
 import json
 import math
-import sys
 
 
 def readFromFile(fileName, type):
@@ -150,9 +149,10 @@ def vectorSpaceModel(totalDocument, queryFileRead, stopwords):
     WD = calculateWD(TF, totalDocument)
 
     pObj = PorterStemmer()
+    fileWrite = open("outputdocument.txt", "w")
     for query in queryList:
-        print "\n---------------------------------------------------------------------------------------"
-        print "Query: ", query
+        fileWrite.write("\n---------------------------------------------------------------------------------------")
+        fileWrite.write("\nQuery: " + query)
         # Separate the string of query into list of words
         listQuery = re.findall(r'\w+', query)
         # Remove the stopwords and numbers from the list of query words
@@ -161,9 +161,13 @@ def vectorSpaceModel(totalDocument, queryFileRead, stopwords):
         processedQuery = [pObj.stem(x.lower(), 0, len(x) - 1) for x in queryWithoutStopword]
         # Calculate the cosine measure (Similarity) for the query
         rankedDocList = calculateSimilarity(processedQuery, IDF, WD, totalDocument)
-        print "Total number of documents retrieved:", len(rankedDocList)
-        print "Document ID:", rankedDocList
-        print "---------------------------------------------------------------------------------------"
+        fileWrite.write("\nTotal number of documents retrieved: " + str(len(rankedDocList)))
+        fileWrite.write("\nDocument ID:\n")
+        fileWrite.write(''.join(str(rankedDocList)))
+        fileWrite.write("\n---------------------------------------------------------------------------------------")
+    fileWrite.close()
+
+    print "Writing to outputdocument.txt file completes."
 
 
 def processQueryList(queryFileRead):
